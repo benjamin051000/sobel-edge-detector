@@ -10,3 +10,5 @@ Parallel Computer Architecture Lab: HPC image edge detection
 - `p1/`: Naive implementation in pure C.
 - `p2/`: Hybrid programming model with MPI and OpenMP. 
 
+# Image 
+![input image](image.jpg)
