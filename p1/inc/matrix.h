@@ -6,8 +6,8 @@
 * Contents can be accesssed via `my_matrix[r][c]`.
 */
 typedef struct {
-    unsigned M; // Rows
-    unsigned N; // Cols
+    const unsigned M; // Rows
+    const unsigned N; // Cols
     int (*data)[]; // Data buffer
 } matrix;
 
@@ -32,6 +32,6 @@ void destroy_matrix(matrix* m);
 #define print_matrix(A) (__print_matrix(#A, A))
 void __print_matrix(const char *const name, const matrix *const m);
 
-int* matrix_at(const matrix *const matrix, unsigned row, unsigned col);
+int* matrix_at(const matrix *const matrix, const unsigned row, const unsigned col);
 
 #endif

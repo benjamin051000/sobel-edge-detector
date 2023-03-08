@@ -2,6 +2,8 @@
 #define _ERROR_CODES_H
 
 #define ERR_BAD_MALLOC 1
+#define ERR_NO_INPUT_FILE 2
+#define ERR_INPUT_PARSING 3
 
 #endif
 

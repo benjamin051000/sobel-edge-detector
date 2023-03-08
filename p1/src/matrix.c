@@ -1,5 +1,4 @@
 #include "common.h"
-#include "matrix.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -61,7 +60,7 @@ void __print_matrix(const char *const name, const matrix *const m) {
 }
 
 
-int* matrix_at(const matrix *const matrix, unsigned row, unsigned col) {
+int* matrix_at(const matrix *const matrix, const unsigned row, const unsigned col) {
     int (*data)[matrix->N] = matrix->data;
     return &data[row][col];
 }
