@@ -22,7 +22,7 @@ matrix load_image(void) {
 #endif
     }
 
-    matrix m = create_matrix(5, 5);
+    matrix m = create_matrix(25, 25);
 
     for(unsigned r = 0; r < m.M; r++) {
         for(unsigned c = 0; c < m.N; c++) {
