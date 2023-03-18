@@ -7,5 +7,7 @@
 #include "dbg.h"
 #include "error_codes.h"
 #include "matrix.h"
+#include "timeit.h"
+#include "image.h"
 
 #endif
