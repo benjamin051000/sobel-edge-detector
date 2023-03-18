@@ -12,3 +12,4 @@ Parallel Computer Architecture Lab: HPC image edge detection
 
 # Image 
 ![input image](image.jpg)
+![output image](output.jpg)
