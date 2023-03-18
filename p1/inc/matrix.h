@@ -2,36 +2,10 @@
 #define _MATRIX_H
 
 /**
-* An MxN matrix allocated on the heap.
-* Contents can be accesssed via `my_matrix[r][c]`.
-*/
-typedef struct {
-    const unsigned M; // Rows
-    const unsigned N; // Cols
-    int (*data)[]; // Data buffer
-} matrix;
-
-/**
-* Create a new matrix.
-* AKA "Constructor"
-* NOTE: returned datatype is not cleared. You must popoulate the matrix yourself.
-*/
-matrix create_matrix(const unsigned M, const unsigned N);
-
-/**
-* "Destructor"
-* Deletes internal data.
-* NOTE: This calls `free()` on internal data.
-*/
-void destroy_matrix(matrix* m);
-
-/**
 * Print the matrix out.
 * Uses a fancy preprocessor macro to also print the variable's name.
 */
-#define print_matrix(A) (__print_matrix(#A, A))
-void __print_matrix(const char *const name, const matrix *const m);
-
-int* matrix_at(const matrix *const matrix, const unsigned row, const unsigned col);
+#define print_matrix(A, M, N) (__print_matrix(#A, M, N, A))
+void __print_matrix(const char *const name, const unsigned M, const unsigned N, int m[M][N]);
 
 #endif

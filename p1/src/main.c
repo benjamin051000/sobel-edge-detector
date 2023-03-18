@@ -1,15 +1,15 @@
-#include "matrix.h"
 #include <stdio.h>
 #include <stdlib.h>
 #define DEBUG
 #include "common.h"
 
 /**
-* load the input text file.
+* load the input text file into a matrix.
+* Side effect: Modifies matrix m.
 */
-matrix load_image(void) {
+void load_image(const char *const filename, const unsigned M, const unsigned N, int m[M][N]) {
     // Open the file
-    FILE *fp = fopen("../input.txt", "r");
+    FILE *fp = fopen(filename, "r");
 
     // Ensure file opened
     if (fp == NULL) {
@@ -22,51 +22,56 @@ matrix load_image(void) {
 #endif
     }
 
-    matrix m = create_matrix(25, 25);
-
-    for(unsigned r = 0; r < m.M; r++) {
-        for(unsigned c = 0; c < m.N; c++) {
+    for(unsigned r = 0; r < M; r++) {
+        for(unsigned c = 0; c < N; c++) {
             // Read the next word from the file.
             char word[4];
             // we know the inputs are 8-bits, so they'll always be 3 digits long.
             if(fscanf(fp, "%3s", word)) {
-                *matrix_at(&m, r, c) = atof(word);
+                // Cast the value to an int and store it
+                m[r][c] = (int)strtol(word, NULL, 10);
             }
             else {
                 DP("Something went wrong while reading words from the file.\n");
+                fclose(fp);
 #ifdef OMPI_MPI_H
                 MPI_Abort(MPI_COMM_WORLD, ERR_INPUT_PARSING);
 #else
                 exit(ERR_INPUT_PARSING);
 #endif
-            }
-        }
-    }
+            } // end of else
+        } // end of for c 
+    } // end of for r 
 
     fclose(fp);
-    return m;
 }
 
+
 int main(void) {
-    DP("Hello, world!\n");
-    int a = 5;
-    DP("a: %d\n", a);
+    DP("Starting up...\n");
 
-    matrix A = create_matrix(4, 4);
+    const unsigned M = 10;
+    const unsigned N = 10;
+    int A[M][N];
 
-    for(unsigned r = 0; r < A.M; r++)
-        for(unsigned c = 0; c < A.N; c++)
-           *matrix_at(&A, r, c) = A.M * r + c;
+    for(unsigned r = 0; r < M; r++)
+        for(unsigned c = 0; c < N; c++)
+           A[r][c] = (int)M * (int)r + (int)c;
 
-    print_matrix(&A);
-    destroy_matrix(&A);
+    print_matrix(A, M, N);
 
-    printf("-------------------------------\n");
+    printf("-----------------------------------------\n");
 
-    matrix input = load_image();
-    print_matrix(&input);
-    destroy_matrix(&input);
+    const unsigned img_M = 25;
+    const unsigned img_N = 25;
+    int input[img_M][img_N];
+    load_image("../input.txt", img_M, img_N, input);
+    print_matrix(input, img_M, img_N);
 
+#ifdef OMPI_MPI_H
+    MPI_Finalize();
+#endif
+    printf("Goodbye.\n");
     return 0;
 }
 
