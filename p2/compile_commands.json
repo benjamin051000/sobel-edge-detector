@@ -1,0 +1,28 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-I./inc",
+      "-c",
+      "-o",
+      "build/./src/matrix.c.o",
+      "src/matrix.c"
+    ],
+    "directory": "/home/benjamin/src/hipergator/par-comp-arch/assignment_4/p1",
+    "file": "/home/benjamin/src/hipergator/par-comp-arch/assignment_4/p1/src/matrix.c",
+    "output": "/home/benjamin/src/hipergator/par-comp-arch/assignment_4/p1/build/src/matrix.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-I./inc",
+      "-c",
+      "-o",
+      "build/./src/main.c.o",
+      "src/main.c"
+    ],
+    "directory": "/home/benjamin/src/hipergator/par-comp-arch/assignment_4/p1",
+    "file": "/home/benjamin/src/hipergator/par-comp-arch/assignment_4/p1/src/main.c",
+    "output": "/home/benjamin/src/hipergator/par-comp-arch/assignment_4/p1/build/src/main.c.o"
+  }
+]
