@@ -53,7 +53,8 @@ int main(int argc, char *argv[]) {
     DP("Starting up...\n");
 
     // inits variables
-    int taskid, numtasks, numworkers, dest;         // MPI variables
+    int taskid, numtasks, numworkers, dest, mtype;  // MPI variables
+    MPI_Status status;
     int rows, cols, averow, extra, offset, source;  // matrix variables
     cols = 5000;                                    // col size of input mat
 
@@ -61,11 +62,6 @@ int main(int argc, char *argv[]) {
     MPI_Init(&argc,&argv);
     MPI_Comm_rank(MPI_COMM_WORLD,&taskid);
     MPI_Comm_size(MPI_COMM_WORLD,&numtasks);
-    if (numtasks < 2 ) {
-        printf("Need at least two MPI tasks. Quitting...\n");
-        MPI_Abort(MPI_COMM_WORLD, rc);
-        exit(1);
-    }
     numworkers = numtasks - 1;
 
     // initializes I/O matricies
@@ -90,9 +86,8 @@ int main(int argc, char *argv[]) {
         printf("rank %d has loaded in the image matrix\n", taskid);
 
         // inits parameters to send matix data to worker tasks
-
-        averow = rows/numworkers;
-        extra = NRA%numworkers;
+        averow = img_M/numworkers;
+        extra = img_M%numworkers;
         offset = 0;
 
         // starts the timer
@@ -111,7 +106,7 @@ int main(int argc, char *argv[]) {
 
         // recieves matrix data from workers tasks
         mtype = FROM_WORKER;
-        for (i=1; i<=numworkers; i++) {
+        for (int i=1; i<=numworkers; i++) {
             source = i;
             MPI_Recv(&offset, 1, MPI_INT, source, mtype, MPI_COMM_WORLD, &status);
             MPI_Recv(&rows, 1, MPI_INT, source, mtype, MPI_COMM_WORLD, &status);
@@ -150,7 +145,7 @@ int main(int argc, char *argv[]) {
         {
             
             // stores thread id# in a variable
-            tid = omp_get_thread_num();
+            int tid = omp_get_thread_num();
             
             // runs sobel algorithim using openMP's thread modelling
             // defaults the scheduler to static with chunk = N/#_of_threads
