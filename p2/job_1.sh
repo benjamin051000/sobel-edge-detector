@@ -1,16 +1,16 @@
 #!/bin/bash
-#SBATCH --job-name=lab3_p2_hybrid
+#SBATCH --job-name=lab4
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=stefenlagos@ufl.edu
 #SBATCH --account=eel6763
 #SBATCH --qos=eel6763
-#SBATCH --nodes=8
-#SBATCH --ntasks=8
-#SBATCH --ntasks-per-node=1
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH --ntasks-per-node=4
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=600mb
 #SBATCH -t 00:03:00
-#SBATCH -o Table2_Row4
+#SBATCH -o outlog
 #SBATCH -e errorlog
-export OMP_NUM_THREADS=64
+export OMP_NUM_THREADS=4
 srun --mpi=pmix_v3 ./build/sobel_edge_detector
