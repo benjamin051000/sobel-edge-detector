@@ -12,8 +12,6 @@
 #define FROM_MASTER 1          // sets a message type
 #define FROM_WORKER 2          // sets a message type
 
-// might need to do this: mpicc -qopenmp mat_mult_hybrid.c -o a.out
-
 // NOTE: moved to below worker tasks instead of doing a function call
 /*
 * Apply the sobel edge detection filter algorithm on matrix input.
@@ -148,7 +146,7 @@ int main(int argc, char *argv[]) {
             int tid = omp_get_thread_num();
             
             // runs sobel algorithim using openMP's thread modelling
-            #pragma omp for schedule(static,556)
+            #pragma omp for schedule(static)
             for(unsigned r = 1; r < rows - 1; r++) {
                 for(unsigned c = 1; c < cols - 1; c++) {
                     // Defitions of neighboring tiles:
