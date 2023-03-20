@@ -7,7 +7,6 @@
 #SBATCH --nodes=2
 #SBATCH --ntasks=4
 #SBATCH --ntasks-per-node=2
-#SBATCH --ntasks-per-socket=2
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=600mb
 #SBATCH -t 00:03:00

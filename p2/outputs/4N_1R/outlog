@@ -1,0 +1,19 @@
+task 1 has 1667 rows and an offset of 0
+Goodbye.
+task 2 has 1667 rows and an offset of 1667
+Goodbye.
+rank 0 has loaded in the image matrix
+Sending 1667 rows to task 1 offset=0
+Sending 1667 rows to task 2 offset=1667
+Sending 1666 rows to task 3 offset=3334
+Received results from task 1
+Received results from task 2
+Received results from task 3
+Elapsed time: 0.09450152 sec
+[1679317110.711695] [c0712a-s2:31081:0]           flush.c:57   UCX  ERROR req 0x1d15140: error during flush: Connection reset by remote peer
+[1679317110.711713] [c0712a-s2:31081:0]           flush.c:57   UCX  ERROR req 0x1d15140: error during flush: Connection reset by remote peer
+[1679317110.711731] [c0712a-s2:31081:0]           flush.c:57   UCX  ERROR req 0x1d15140: error during flush: Connection reset by remote peer
+[1679317110.711733] [c0712a-s2:31081:0]           flush.c:57   UCX  ERROR req 0x1d15140: error during flush: Connection reset by remote peer
+task 3 has 1666 rows and an offset of 3334
+Goodbye.
+Goodbye.

@@ -4,10 +4,9 @@
 #SBATCH --mail-user=stefenlagos@ufl.edu
 #SBATCH --account=eel6763
 #SBATCH --qos=eel6763
-#SBATCH --nodes=2
+#SBATCH --nodes=4
 #SBATCH --ntasks=4
-#SBATCH --ntasks-per-node=2
-#SBATCH --ntasks-per-socket=2
+#SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=600mb
 #SBATCH -t 00:03:00

@@ -1,0 +1,15 @@
+task 3 has 1666 rows and an offset of 3334
+Goodbye.
+task 1 has 1667 rows and an offset of 0
+Goodbye.
+task 2 has 1667 rows and an offset of 1667
+Goodbye.
+rank 0 has loaded in the image matrix
+Sending 1667 rows to task 1 offset=0
+Sending 1667 rows to task 2 offset=1667
+Sending 1666 rows to task 3 offset=3334
+Received results from task 1
+Received results from task 2
+Received results from task 3
+Elapsed time: 0.08898420 sec
+Goodbye.
